@@ -2,6 +2,7 @@ export type Language = 'pt' | 'en';
 export type Localized = Record<Language, string>;
 export type Location = {
   id: string;
+  databaseId: string;
   name: Localized;
   image: string;
   imagePosition: string;
@@ -11,36 +12,37 @@ export type Location = {
   rating: number;
   phone?: string;
   hours?: Localized;
-  reservationUrl?: string;
+  reservationUrl: string;
+  reservationWidgetUrl: string;
 };
 export const brand = {
   name: 'Big Bowl',
   chineseName: '来一碗',
-  logo: '/images/logo-black-trim.png',
-  logoLight: '/images/logo-white-trim.png',
+  logo: '/images/logo-black.webp',
+  logoLight: '/images/logo-white.webp',
   menuUrl: undefined as string | undefined,
 };
-// Names are taken from supplied image filenames. Add operational details only after verification.
+// Restaurant addresses and opening hours supplied by the project owner.
 export const locations: Location[] = [
-  { id: 'roma', name: { pt: 'Roma', en: 'Roma' }, image: '/images/space-roma-outer.png', imagePosition: 'center', rating: 4.8, reservationUrl: '/reservation?branch=roma', mapUrl: 'https://www.google.com/maps/search/?api=1&query=Big%20Bowl%20Roma%20Lisboa', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.8537893687135!2d-9.141947524024284!3d38.744117271757204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1933a0d6d204ff%3A0xf75fb43566e318d9!2sBig%20Bowl%20Roma!5e0!3m2!1sen!2spt!4v1791816551693!5m2!1sen!2spt' },
-  { id: 'telheiras', name: { pt: 'Telheiras', en: 'Telheiras' }, image: '/images/space-telheiras.png', imagePosition: 'center', rating: 4.7, reservationUrl: '/reservation?branch=telheiras', mapUrl: 'https://www.google.com/maps/search/?api=1&query=Big%20Bowl%20Telheiras%20Lisboa', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.033372356156!2d-9.17737252402333!3d38.762938571753004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd193300295a044d%3A0x7ad1f1a5e1d97de2!2sBig%20Bowl%20Telheiras!5e0!3m2!1sen!2spt!4v1791816560527!5m2!1sen!2spt' },
-  { id: 'spacio', name: { pt: 'Spacio', en: 'Spacio' }, image: '/images/space-spacio.png', imagePosition: 'center', rating: 4.2, reservationUrl: '/reservation?branch=spacio', mapUrl: 'https://www.google.com/maps/search/?api=1&query=Big%20Bowl%20Restaurant%20Spacio', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.0489108852853!2d-9.11712832402337!3d38.762582171753294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1933e04fa2b567%3A0xc79e7269de00a055!2sBig%20Bowl%20Restaurant%20Spacio!5e0!3m2!1sen!2spt!4v1791816532933!5m2!1sen!2spt' },
+  { id: 'roma', databaseId: 'bigbowlroma', address: 'Lisboa, Av. de Roma, 1000-262, Lisboa, PT', hours: { pt: 'Todos os dias: 12:00–23:00', en: 'Every day: 12pm–11pm' }, name: { pt: 'Roma', en: 'Roma' }, image: '/images/space-roma-outer.webp', imagePosition: 'center', rating: 4.8, reservationUrl: '/reservation?branch=bigbowlroma', reservationWidgetUrl: 'https://reserve.intelis.pt/bigbowlroma', mapUrl: 'https://www.google.com/maps/search/?api=1&query=Big%20Bowl%20Roma%20Lisboa', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.8537893687135!2d-9.141947524024284!3d38.744117271757204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1933a0d6d204ff%3A0xf75fb43566e318d9!2sBig%20Bowl%20Roma!5e0!3m2!1sen!2spt!4v1791816551693!5m2!1sen!2spt' },
+  { id: 'telheiras', databaseId: 'bigbowltelheiras', address: 'R. Prof. Carlos Teixeira 7A, 1600-608, Lisboa PT', hours: { pt: 'Seg–Sex: 12:00–15:30 · 18:30–23:00\nQuarta-feira: encerrado\nSáb–Dom: 12:00–23:00', en: 'Mon–Fri: 12pm–3:30pm · 6:30pm–11pm\nWednesday: closed\nWeekends: 12pm–11pm' }, name: { pt: 'Telheiras', en: 'Telheiras' }, image: '/images/space-telheiras.webp', imagePosition: 'center', rating: 4.7, reservationUrl: '/reservation?branch=bigbowltelheiras', reservationWidgetUrl: 'https://reserve.intelis.pt/bigbowltelheiras', mapUrl: 'https://www.google.com/maps/search/?api=1&query=Big%20Bowl%20Telheiras%20Lisboa', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.033372356156!2d-9.17737252402333!3d38.762938571753004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd193300295a044d%3A0x7ad1f1a5e1d97de2!2sBig%20Bowl%20Telheiras!5e0!3m2!1sen!2spt!4v1791816560527!5m2!1sen!2spt' },
+  { id: 'spacio', databaseId: 'bigbowlspacio', address: 'R. Cidade de Bolama, 1800-079, Lisboa PT', hours: { pt: 'Todos os dias: 11:00–23:00', en: 'Every day: 11am–11pm' }, name: { pt: 'Spacio', en: 'Spacio' }, image: '/images/space-spacio.webp', imagePosition: 'center', rating: 4.2, reservationUrl: '/reservation?branch=bigbowlspacio', reservationWidgetUrl: 'https://reserve.intelis.pt/bigbowlspacio', mapUrl: 'https://www.google.com/maps/search/?api=1&query=Big%20Bowl%20Restaurant%20Spacio', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.0489108852853!2d-9.11712832402337!3d38.762582171753294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1933e04fa2b567%3A0xc79e7269de00a055!2sBig%20Bowl%20Restaurant%20Spacio!5e0!3m2!1sen!2spt!4v1791816532933!5m2!1sen!2spt' },
 ];
 export const dishes = [
-  { image: '/images/food-noodle.png', title: { pt: 'Noodles de vaca', en: 'Beef noodles' }, description: { pt: 'Caldo, vaca e ervas frescas', en: 'Broth, beef and fresh herbs' } },
-  { image: '/images/food-noodle-2.png', title: { pt: 'Noodles com camarão', en: 'Prawn noodles' }, description: { pt: 'Camarão, legumes e lima', en: 'Prawns, vegetables and lime' } },
-  { image: '/images/food-noodle-3.png', title: { pt: 'Noodles picantes', en: 'Spicy noodles' }, description: { pt: 'Vaca, ovo e caldo aromático', en: 'Beef, egg and aromatic broth' } },
-  { image: '/images/food-noodle-4.png', title: { pt: 'Noodles de marisco', en: 'Seafood noodles' }, description: { pt: 'Camarão, verduras e sésamo', en: 'Prawns, greens and sesame' } },
-  { image: '/images/food-dumpling.png', title: { pt: 'Dumplings', en: 'Dumplings' }, description: { pt: 'Pequenos pratos para partilhar', en: 'Small plates to share' } },
-  { image: '/images/food-bao.png', title: { pt: 'Bao', en: 'Bao' }, description: { pt: 'Macio, quente e cheio de sabor', en: 'Soft, warm and full of flavour' } },
+  { image: '/images/food-noodle.webp', title: { pt: 'Noodles de vaca', en: 'Beef noodles' }, description: { pt: 'Caldo, vaca e ervas frescas', en: 'Broth, beef and fresh herbs' } },
+  { image: '/images/food-noodle-2.webp', title: { pt: 'Noodles com camarão', en: 'Prawn noodles' }, description: { pt: 'Camarão, legumes e lima', en: 'Prawns, vegetables and lime' } },
+  { image: '/images/food-noodle-3.webp', title: { pt: 'Noodles picantes', en: 'Spicy noodles' }, description: { pt: 'Vaca, ovo e caldo aromático', en: 'Beef, egg and aromatic broth' } },
+  { image: '/images/food-noodle-4.webp', title: { pt: 'Noodles de marisco', en: 'Seafood noodles' }, description: { pt: 'Camarão, verduras e sésamo', en: 'Prawns, greens and sesame' } },
+  { image: '/images/food-dumpling.webp', title: { pt: 'Dumplings', en: 'Dumplings' }, description: { pt: 'Pequenos pratos para partilhar', en: 'Small plates to share' } },
+  { image: '/images/food-bao.webp', title: { pt: 'Bao', en: 'Bao' }, description: { pt: 'Macio, quente e cheio de sabor', en: 'Soft, warm and full of flavour' } },
 ];
 export const copy = {
   pt: {
     skip: 'Saltar para o conteúdo', home: 'Início', menu: 'Menu', restaurants: 'Restaurantes', contact: 'Contactos', reserve: 'Reservar',
     menuOpen: 'Abrir menu', menuClose: 'Fechar menu', language: 'Escolher idioma',
-    heroEyebrow: 'Restaurante Chinês', heroLine: 'Uma boa refeição começa com uma boa taça.', bookTable: 'Reservar mesa', viewMenu: 'Ver menu', explore: 'Descobrir',
+    heroEyebrow: 'Sabores asiáticos para partilhar', heroLine: 'Uma boa refeição começa com uma boa taça.', bookTable: 'Reservar mesa', viewMenu: 'Ver menu', explore: 'Descobrir',
     specialties: 'Especialidades', menuNote: 'Alguns sabores que nos definem.', fullMenu: 'Explorar especialidades',
-    reservationIntro: 'Escolha o restaurante onde quer sentar-se.', reservationGuidance: 'Consulte a localização e os contactos disponíveis na ficha do restaurante.', reservationMap: 'Abrir ficha do restaurante', rating: 'Avaliação', reviews: 'Avaliações', reviewsIntro: 'Palavras de quem se sentou à nossa mesa.', previousRestaurant: 'Restaurante anterior', nextRestaurant: 'Restaurante seguinte', viewMap: 'Ver no mapa',
+    reservationIntro: 'Escolha o restaurante onde quer sentar-se.', rating: 'Avaliação', reviews: 'Avaliações', reviewsIntro: 'Palavras de quem se sentou à nossa mesa.', previousRestaurant: 'Restaurante anterior', nextRestaurant: 'Restaurante seguinte', viewMap: 'Ver no mapa',
     ourRestaurants: 'Os nossos restaurantes', restaurantsIntro: 'Encontre a sua próxima mesa em Lisboa.', location: 'Local', directions: 'Como chegar',
     visit: 'Visite-nos', contactTitle: 'Reservar mesa', contactIntro: 'Escolha o restaurante e venha ter connosco.', selectLocation: 'Escolher restaurante', address: 'Morada', phone: 'Telefone', hours: 'Horário',
     bookingTitle: 'À sua espera', bookingCopy: 'Escolha o espaço que lhe fica mais perto e venha sentar-se à mesa.', bookingDirect: 'Abrir reservas',
@@ -49,9 +51,9 @@ export const copy = {
   en: {
     skip: 'Skip to content', home: 'Home', menu: 'Menu', restaurants: 'Restaurants', contact: 'Contact', reserve: 'Book',
     menuOpen: 'Open menu', menuClose: 'Close menu', language: 'Choose language',
-    heroEyebrow: 'Chinese Restaurant', heroLine: 'A good meal begins with a good bowl.', bookTable: 'Book a table', viewMenu: 'View menu', explore: 'Explore',
+    heroEyebrow: 'Asian flavours, made to share', heroLine: 'A good meal begins with a good bowl.', bookTable: 'Book a table', viewMenu: 'View menu', explore: 'Explore',
     specialties: 'Our specialties', menuNote: 'A few flavours that define us.', fullMenu: 'Explore specialties',
-    reservationIntro: 'Choose the restaurant where you would like to dine.', reservationGuidance: 'See the location and available contact details on the restaurant listing.', reservationMap: 'Open restaurant listing', rating: 'Rating', reviews: 'Reviews', reviewsIntro: 'From guests who joined us at the table.', previousRestaurant: 'Previous restaurant', nextRestaurant: 'Next restaurant', viewMap: 'View on map',
+    reservationIntro: 'Choose the restaurant where you would like to dine.', rating: 'Rating', reviews: 'Reviews', reviewsIntro: 'From guests who joined us at the table.', previousRestaurant: 'Previous restaurant', nextRestaurant: 'Next restaurant', viewMap: 'View on map',
     ourRestaurants: 'Our restaurants', restaurantsIntro: 'Find your next table in Lisbon.', location: 'Location', directions: 'Get directions',
     visit: 'Visit us', contactTitle: 'Book a table', contactIntro: 'Choose a restaurant and come by.', selectLocation: 'Choose a restaurant', address: 'Address', phone: 'Phone', hours: 'Hours',
     bookingTitle: 'See you soon', bookingCopy: 'Choose the space nearest to you and join us at the table.', bookingDirect: 'Open bookings',

@@ -5,10 +5,9 @@ import { useRef } from 'react';
 import { brand } from '@/lib/content';
 import { useLanguage } from './LanguageProvider';
 import { CTA } from './CTA';
-import { MagneticButton } from './MagneticButton';
 const slides = [
-  { src: '/images/space-roma.png', alt: { pt: 'Interior do Big Bowl Roma com mesas de madeira', en: 'Big Bowl Roma dining room with wooden tables' } },
-  { src: '/images/food-cta-2.png', alt: { pt: 'Pratos chineses servidos numa mesa do Big Bowl', en: 'Chinese dishes served at a Big Bowl table' } },
+  { src: '/images/space-roma.webp', alt: { pt: 'Interior do Big Bowl Roma com mesas de madeira', en: 'Big Bowl Roma dining room with wooden tables' } },
+  { src: '/images/food-cta-2.webp', alt: { pt: 'Pratos chineses servidos numa mesa do Big Bowl', en: 'Chinese dishes served at a Big Bowl table' } },
 ];
 export function Hero() {
   const { t, language } = useLanguage();
@@ -26,7 +25,7 @@ export function Hero() {
       <div className="hero-content">
         <h1>{brand.name}</h1>
         <p className="hero-eyebrow">{t.heroEyebrow}</p>
-        <div className="hero-actions"><MagneticButton href="/reservation?branch=roma">{t.bookTable}</MagneticButton><CTA href="#menu" variant="outline">{t.viewMenu}</CTA></div>
+        <div className="hero-actions"><CTA href="/reservation?branch=bigbowlroma">{t.bookTable}</CTA><CTA href="#menu" variant="outline">{t.viewMenu}</CTA></div>
       </div>
       <a className="hero-scroll-cue" href="#restaurants">{t.explore}<span aria-hidden="true" /></a>
     </div>

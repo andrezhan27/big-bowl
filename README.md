@@ -1,24 +1,24 @@
-# Big Bowl landing page
+# Big Bowl
 
-Next.js 16 App Router landing page for Big Bowl / 来一碗 in Lisbon. Built with TypeScript, Tailwind CSS 4, Framer Motion 12 and Lucide.
+A bilingual Big Bowl / 来一碗 website for Lisbon, built with Next.js 16, TypeScript, Tailwind CSS 4, Framer Motion 12, and Lucide.
 
-## Run locally
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Validation: `npm run lint`, `npm run typecheck`, `npm run build`.
+Run `npm run lint`, `npm run typecheck`, and `npm run build` before deployment. The build script uses Next.js Webpack because the local sandbox blocks a Turbopack worker port. Vercel can use this script as configured.
 
-## Content and business details
+## Editing content
 
-The identity and photographs come from `public/images`. The exterior photograph confirms the Big Bowl / 来一碗 name and its red signage. The semantic palette in `src/app/globals.css` is a visual selection from those supplied assets, with the red sign as the primary reference. `src/lib/content.ts` holds brand details, PT/EN copy, sample dish captions, locations and their optional contact fields. The dish captions describe visible ingredients and are illustrative, **not a verified menu**. Replace them with approved menu copy before publishing. No full menu PDF or URL was supplied, so its CTA returns to the visible specialties.
+`src/lib/content.ts` holds the brand, PT/EN interface text, three ordered restaurants (Roma, Telheiras, Spacio), ratings, review excerpts, illustrative dish labels, map links, and reservation paths. The ratings and reviews are supplied by the project owner. The dish captions describe supplied photographs and are **not a verified full menu**. Replace them with approved menu copy before publishing. There is no supplied menu PDF or URL, so the full-menu CTA returns to the visible specialties.
 
-The supplied filenames indicate Roma, Telheiras and Spacio spaces. Their exact addresses, phone numbers, hours, directions links and reservation URLs were not supplied, so those fields remain unset. Enter confirmed values in each location object. Directions, phone and booking actions only render when corresponding data exists. An iframe appears only for a configured reservation URL. The hero reservation CTA leads to the contact section until a booking destination is available.
+The supplied photos and logo live in `public/images`. The navbar and footer use trimmed copies of the supplied transparent logos. The bowl favicon is cropped from the same artwork. Adjust restaurant image focal points in `src/lib/content.ts` and hero imagery in `src/components/Hero.tsx`. The semantic red, warm neutral, and text palette lives in `src/app/globals.css` and is exposed to Tailwind.
 
-Replace images in `public/images` and update paths and focal points in `src/lib/content.ts` or `src/components/Hero.tsx`. The navbar uses a cropped copy of the supplied logo (`logo-nav.png`) to preserve the complete icon and lettering. The favicon currently uses the supplied logo image.
+The supplied Google Maps embed links are configured per restaurant. Exact addresses, opening hours, phone numbers, and a booking service or backend were not supplied. Each Reserve button opens `/reservation?branch=roma`, `/reservation?branch=telheiras`, or `/reservation?branch=spacio`; that page presents the selected restaurant and map. It does **not** submit a reservation. Add verified contact information and a real booking integration before treating the route as transactional.
 
-## Deploy to Vercel
+## Vercel
 
-Import the repository into Vercel and use the Next.js defaults. No environment variables are required. Add verified booking, menu and operational details before public launch. No canonical domain or business structured data is configured.
+Import the repository into Vercel with Next.js defaults. No environment variables are required. No canonical domain or structured business data is configured. Add verified operational details before public launch.

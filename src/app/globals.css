@@ -271,7 +271,8 @@ body { font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe 
 .map-footer a { display: inline-flex; align-items: center; gap: 4px; color: white; border-bottom: 1px solid #e3aaa1; }
 @media (max-width: 800px) {
 
-  .hero-scroll { height: 175svh; }
+  /* Allow about 117svh for the slide transition and 33svh on the second image. */
+  .hero-scroll { height: 250svh; }
   .hero-slide .hero-image { object-position: center !important; }
   .hero-content h1 { font-size: clamp(56px,10vw,82px); }
   .restaurant-carousel { --restaurant-image-height: 230px; }
@@ -285,7 +286,6 @@ body { font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe 
   .contact-intro { grid-template-columns: 1fr; gap: 30px; }
 }
 @media (max-width: 600px) {
-  .hero-scroll { height: 170svh; }
   .hero-content h1 { font-size: clamp(50px,13vw,68px); }
   .hero-eyebrow { font-size: 11px; }
   .hero-slide-1 .hero-image,.hero-slide-2 .hero-image { object-position: center !important; }

@@ -1,6 +1,6 @@
 'use client';
 import { getImageProps } from 'next/image';
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { brand } from '@/lib/content';
 import { useLanguage } from './LanguageProvider';
@@ -14,10 +14,9 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
-  // Smooth touch-scroll updates together so the slides remain flush throughout the transition.
-  const progress = useSpring(scrollYProgress, { stiffness: 300, damping: 40, mass: .3, restDelta: .001 });
-  const first = useTransform(progress, [0, .78, 1], ['0%', '-100%', '-100%']);
-  const second = useTransform(progress, [0, .78, 1], ['100%', '0%', '0%']);
+  // Track scrolling directly, then hold the second image before the sticky hero releases.
+  const first = useTransform(scrollYProgress, [0, .78, 1], ['0%', '-100%', '-100%']);
+  const second = useTransform(scrollYProgress, [0, .78, 1], ['100%', '0%', '0%']);
   return <section id="home" className="hero-scroll" ref={ref} aria-label={brand.name}>
     <div className="hero-sticky">
       {slides.map((slide, index) => {

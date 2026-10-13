@@ -81,5 +81,5 @@ export const reviews: Review[] = [
     en: 'Food was good. And the staff was helpful trying to speak english with us as that was all we knew. Must try if into Asian food.' } },
   { id: 'kina', locationId: 'spacio', author: 'Kina Jin', stars: 5, quote: {
     pt: 'Comida chinesa autêntica e deliciosa! Provei o arroz de frango teriyaki e a sopa de noodles com vaca; ambos estavam excelentes. O proprietário é muito simpático e atencioso. Voltarei, recomendo!',
-    en: 'Authentic and delicious Chinese food! I tried the chicken teriyaki rice and the beef noodle soup, both were excellent. The owner is very friendly and attentive. I will definitely return. I recommend it!' } },
+    en: 'Authentic and delicious Chinese food! I tried the chicken teriyaki rice and the beef noodle soup, both were excellent. The owner is very friendly and attentive. I will definitely return. I recommend it! ' } },
 ];
